@@ -21,7 +21,6 @@ export default {
         alignItems: "center",
         "& a": {
             color: "#fff",
-            
         }
     },
     palettes: {
