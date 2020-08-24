@@ -6,7 +6,8 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
+import { Picker } from "emoji-mart";
+import 'emoji-mart/css/emoji-mart.css';
 
 export class PaletteMetaForm extends Component {
     constructor(props){
@@ -28,29 +29,18 @@ export class PaletteMetaForm extends Component {
         this.setState({[evt.target.name]: evt.target.value});
     };
 
-    handleClose = () => {
-        this.setState({
-            open: false,
-        })
-    };
-
-    handleClickOpen = () => {
-        this.setState({
-            open: true,
-        })
-    };
-
     render() {
         const { open, newPaletteName } = this.state;
-        const { handleSubmit } = this.props;
+        const { handleSubmit, hideForm } = this.props;
         return (
-            <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-            <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+            <Dialog open={open} onClose={hideForm} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Choose A Palette Name</DialogTitle>
             <ValidatorForm onSubmit={() => handleSubmit(newPaletteName)}>
                 <DialogContent>
                     <DialogContentText>
                     Please enter a name for your new beautiful palette. Make sure it's unique!
                     </DialogContentText>
+                    <Picker/>
                     <TextValidator
                     label="Palette Name" 
                     value={newPaletteName}
@@ -63,7 +53,7 @@ export class PaletteMetaForm extends Component {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.handleClose} color="primary">
+                    <Button onClick={hideForm} color="primary">
                     Cancel
                     </Button>
                     <Button
