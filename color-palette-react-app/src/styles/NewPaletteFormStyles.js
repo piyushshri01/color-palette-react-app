@@ -7,7 +7,8 @@ const styles = theme => ({
     },
     drawer: {
       width: drawerWidth,
-      flexShrink: 0
+      flexShrink: 0,
+      height: "100vh",
     },
     drawerPaper: {
       width: drawerWidth,
@@ -17,6 +18,7 @@ const styles = theme => ({
     drawerHeader: {
       display: "flex",
       alignItems: "center",
+      width: "100%",
       padding: "0 8px",
       ...theme.mixins.toolbar,
       justifyContent: "flex-end"
@@ -24,7 +26,7 @@ const styles = theme => ({
     content: {
       flexGrow: 1,
       height: "calc(100vh - 64px)",
-      padding: theme.spacing(3),
+      padding: 0,
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen
